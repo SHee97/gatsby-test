@@ -1,9 +1,8 @@
 import { FunctionComponent } from 'react'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import styled from '@emotion/styled'
 
-const PROFILE_IMAGE_LINK = `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`
-
-const ProfileImageWrapper = styled.img`
+const ProfileImageWrapper = styled(GatsbyImage)`
   width: 120px;
   height: 120px;
   margin-bottom: 30px;
@@ -15,7 +14,13 @@ const ProfileImageWrapper = styled.img`
   }
 `
 
-const ProfileImage: FunctionComponent = () => {
-  return <ProfileImageWrapper src={PROFILE_IMAGE_LINK} alt="Profile Image" />
+type ProfileImageProps = {
+  profileImage: IGatsbyImageData
+}
+
+const ProfileImage: FunctionComponent<ProfileImageProps> = ({
+  profileImage,
+}) => {
+  return <ProfileImageWrapper image={profileImage} alt="Profile Image" />
 }
 export default ProfileImage
